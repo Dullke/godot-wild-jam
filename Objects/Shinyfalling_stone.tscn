@@ -54,6 +54,7 @@ size = Vector3(1.92676, 4.68774, 2.46777)
 
 [node name="FallingStone" type="CharacterBody3D" node_paths=PackedStringArray("detection")]
 transform = Transform3D(0.72, 0, 0, 0, 0.72, 0, 0, 0, 0.72, 0, 0, 0)
+collision_layer = 48
 collision_mask = 25
 script = ExtResource("1_11aey")
 detection = NodePath("Area3D")
@@ -72,5 +73,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.11719, 0)
 shape = SubResource("BoxShape3D_f7jih")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31333, 2.48775, 5.65864)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31333, 2.48775, -0.34136)
 shape = SubResource("BoxShape3D_hvai8")

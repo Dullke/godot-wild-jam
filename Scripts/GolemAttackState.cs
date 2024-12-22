@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 public partial class GolemAttackState : Node, GolemState
 {
@@ -7,8 +8,9 @@ public partial class GolemAttackState : Node, GolemState
     [Export] private PackedScene rocks;
     [Export] private PackedScene shiningRock;
     [Export] private Node3D golem;
+    [Export] private CollisionShape3D shape;
 
-    private int activeStones = 0;
+    private int punches;
 
     public void OnEnter(GolemStateMachine machine)
     {
@@ -18,20 +20,26 @@ public partial class GolemAttackState : Node, GolemState
             return;
         }
 
-        if (activeStones < 2)
+
+        if (punches > 4)
         {
             machine.animator.Play("Stomp");
-        } else if (machine.GlobalPosition.DistanceTo(ManagersDB.GameManager.player.GlobalPosition) < 8) {
+            punches = 0;
+        } else if (machine.GlobalPosition.DistanceTo(ManagersDB.GameManager.player.GlobalPosition) < 10) {
             machine.animator.Play("Punch");
+            punches++;
         }
-
+        else
+        {
+            machine.ChangeState("Wander");
+        }
     }
 
-    public void OnTick(GolemStateMachine machine)
+    public void OnTick(GolemStateMachine machine, float fixedDeltaTime)
     {
         Vector3 directionToPlayer = (ManagersDB.GameManager.player.GlobalPosition - machine.GlobalPosition).Normalized();
         float angle = Mathf.Atan2(directionToPlayer.X, directionToPlayer.Z);
-        machine.Rotation = Vector3.Up * Mathf.LerpAngle(machine.Rotation.Y, angle, ManagersDB.GameManager.GlobalDeltaTime * 6);
+        machine.Rotation = Vector3.Up * Mathf.LerpAngle(machine.Rotation.Y, angle, ManagersDB.GameManager.GlobalDeltaTime * 8);
     }
 
     public void OnExit(GolemStateMachine machine)
@@ -44,13 +52,7 @@ public partial class GolemAttackState : Node, GolemState
         int shiningStoneIndex = GD.RandRange(0, stonesAmount - 1);
         for (int i = 0; i < stonesAmount; i++)
         {
-            Node3D fallingRock = null;
-
-            //Decides which stone will be affected by stasis
-            //if (i == shiningStoneIndex)
-            //    fallingRock = shiningRock.Instantiate() as Node3D;
-            //else 
-            fallingRock = rocks.Instantiate() as Node3D;
+            Node3D fallingRock = rocks.Instantiate() as Node3D;
 
             //Spawns it and alocates randomly
             ManagersDB.GameManager.AddChild(fallingRock);
@@ -64,7 +66,6 @@ public partial class GolemAttackState : Node, GolemState
 
             fallingRock.GlobalPosition = randomPosition;
         }
-        activeStones = stonesAmount;
     }
 
 }

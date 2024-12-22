@@ -1,20 +1,30 @@
 using Godot;
 using Godot.Collections;
+using System.Collections.Generic;
 
 public partial class GameManager : Node3D
 {
     public Vector3 CursorWorldPosition { get { return cursorWorldPosition; } }
     private Vector3 cursorWorldPosition;
+
+    public IFreezable HoveringOver {  get { return hoveringOver; } }
+    private IFreezable hoveringOver;
+
+    private List<IFreezable> onStasisObjects = new List<IFreezable>();
+
     public float FrozenTimeLeft { get { return frozenTimeLeft; } }
     private float frozenTimeLeft;
 
     [Export] public Node3D cursorIndicators;
     [Export] public float maxFreezeTime = 5f;
-    [Export] public float overchargeThreshold;
+    [Export] public Timer cooldown;
+    public float overchargeThreshold;
     public float GlobalDeltaTime;
 
+    public bool TimeFrozenFlag { get { return timeFrozen; } }
     private bool timeFrozen = false;
     private bool overcharged = false;
+    private bool onCooldownFlag = false;
 
     //Make this a resource, it is better for other scripts to access player data.
     [Export] public PlayerController player;
@@ -23,35 +33,69 @@ public partial class GameManager : Node3D
     [Signal]
     public delegate void OnTimeFrozenEventHandler();
 
+    [Signal]
+    public delegate void OnTimeUnfrozenEventHandler();
+
 
     public override void _Ready()
     {
         frozenTimeLeft = maxFreezeTime;
-        overchargeThreshold = maxFreezeTime / 5;
+        overchargeThreshold = maxFreezeTime / 4;
+        cooldown.Timeout += () => onCooldownFlag = false;
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        //Prevents the playert from freezing time if artifact is overcharged
+        cursorWorldPosition = GetCursorToWorldPoint();
+        cursorIndicators.GlobalPosition = cursorWorldPosition;
+
+        //Prevents the player from freezing time if artifact is overcharged
         if (frozenTimeLeft <= overchargeThreshold) overcharged = true;
+        else overcharged = false;
 
-        if (Input.IsActionJustPressed("FreezeTime") && overcharged == false)
-            timeFrozen = !timeFrozen;
+        if (Input.IsActionJustPressed("FreezeTime") && onCooldownFlag == false)
+            if (overcharged == false || timeFrozen == true)
+            {
+                timeFrozen = !timeFrozen;
+                if (timeFrozen) EmitSignal(SignalName.OnTimeFrozen);
+                else
+                {
+                    onCooldownFlag = true;
+                    cooldown.Start();
+                    EmitSignal(SignalName.OnTimeUnfrozen);
+                } 
+            }
 
-        if (timeFrozen && frozenTimeLeft > 0)
+        if (timeFrozen && FrozenTimeLeft > 0)
         {
-            EmitSignal(SignalName.OnTimeFrozen);
             GlobalDeltaTime = 0;
             frozenTimeLeft -= (float)delta;
         }
         else
         {
+            timeFrozen = false;
             GlobalDeltaTime = (float)delta;
             frozenTimeLeft += (float)delta;
         }
 
         frozenTimeLeft = Mathf.Clamp(frozenTimeLeft, 0, maxFreezeTime);
-        cursorWorldPosition = GetCursorToWorldPoint();
+
+
+        if (Input.IsActionJustPressed("Select") && hoveringOver != null && timeFrozen)
+        {
+            hoveringOver.Highlight();
+            onStasisObjects.Add(hoveringOver);
+        }
+
+        if (Input.IsActionJustPressed("ReleaseAll"))
+        {
+            foreach (IFreezable frozenObject in onStasisObjects)
+            {
+                frozenObject.Unfreeze();
+            }
+
+            onStasisObjects.Clear();
+        }
     }
 
     private Vector3 GetCursorToWorldPoint()
@@ -69,10 +113,18 @@ public partial class GameManager : Node3D
         rayQuery.From = rayOrigin;
         rayQuery.To = rayEnd;
 
-        //Intersect floor and get hit position.
+        rayQuery.CollisionMask = 32;
+        //Intersect objects that can be put on stasis
         Dictionary rayResults = spaceState.IntersectRay(rayQuery);
         if (rayResults.Count > 0)
+            hoveringOver = (Node3D)rayResults["collider"] as IFreezable;
+        else hoveringOver = null;
+
+        //Intersect floor and get hit position.
+        rayResults = spaceState.IntersectRay(rayQuery);
+        if (rayResults.Count > 0)
             return (Vector3)rayResults["position"];
+
 
         return Vector3.Zero;
     }

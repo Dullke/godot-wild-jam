@@ -1,7 +1,7 @@
 using Godot;
 
 
-public partial class GolemStateMachine : CharacterBody3D
+public partial class GolemStateMachine : CharacterBody3D, IDamageable
 {
     GolemState currentState;
     GolemState previousState;
@@ -13,6 +13,9 @@ public partial class GolemStateMachine : CharacterBody3D
 
     public override void _EnterTree()
     {
+        ManagersDB.GameManager.OnTimeFrozen += animator.Pause;
+        ManagersDB.GameManager.OnTimeUnfrozen += () => animator.Play();
+
         states = GetNode("%States");
         ChangeState("Attack");
         startedFlag = true;
@@ -24,7 +27,7 @@ public partial class GolemStateMachine : CharacterBody3D
     {
         float fixedDeltaTime = (float)delta;
 
-        currentState.OnTick(this);
+        currentState.OnTick(this, fixedDeltaTime);
     }
 
     public GolemState GetState(string state) => states.GetNode(state) as GolemState;
@@ -43,4 +46,9 @@ public partial class GolemStateMachine : CharacterBody3D
         currentState.OnEnter(this);
     }
 
+    public void DealDamage(int amount)
+    {
+        animator.Stop();
+        ChangeState("Damaged");
+    }
 }

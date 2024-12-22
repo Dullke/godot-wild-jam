@@ -1,0 +1,179 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|c:\\users\\dullk\\onedrive\\documentos\\godotwildjam\\godot-wild-jam\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|solutionrelative:scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|c:\\users\\dullk\\onedrive\\documentos\\godotwildjam\\godot-wild-jam\\scripts\\golemattackstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|solutionrelative:scripts\\golemattackstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Objects\\HitBoxModule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Objects\\HitBoxModule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|c:\\users\\dullk\\onedrive\\documentos\\godotwildjam\\godot-wild-jam\\scripts\\golemwanderstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|solutionrelative:scripts\\golemwanderstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|c:\\users\\dullk\\onedrive\\documentos\\godotwildjam\\godot-wild-jam\\objects\\fallingstone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|solutionrelative:objects\\fallingstone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|c:\\users\\dullk\\onedrive\\documentos\\godotwildjam\\godot-wild-jam\\scripts\\golemstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|solutionrelative:scripts\\golemstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|c:\\users\\dullk\\onedrive\\documentos\\godotwildjam\\godot-wild-jam\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|solutionrelative:scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|c:\\users\\dullk\\onedrive\\documentos\\godotwildjam\\godot-wild-jam\\scripts\\golemstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A73E221-2ED4-48D1-BB76-5A863DAD6563}|GodotWildJam.csproj|solutionrelative:scripts\\golemstatemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Entities\\GolemDamageState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Entities\\GolemDamageState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Scripts\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Scripts\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Scripts\\PlayerController.cs",
+              "RelativeToolTip": "Scripts\\PlayerController.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAxwBAAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T04:02:21.907Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GolemState.cs",
+              "DocumentMoniker": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Scripts\\GolemState.cs",
+              "RelativeDocumentMoniker": "Scripts\\GolemState.cs",
+              "ToolTip": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Scripts\\GolemState.cs",
+              "RelativeToolTip": "Scripts\\GolemState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAEAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T02:12:26.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GolemAttackState.cs",
+              "DocumentMoniker": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Scripts\\GolemAttackState.cs",
+              "RelativeDocumentMoniker": "Scripts\\GolemAttackState.cs",
+              "ToolTip": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Scripts\\GolemAttackState.cs",
+              "RelativeToolTip": "Scripts\\GolemAttackState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T01:24:42.337Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GolemWanderState.cs",
+              "DocumentMoniker": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Scripts\\GolemWanderState.cs",
+              "RelativeDocumentMoniker": "Scripts\\GolemWanderState.cs",
+              "ToolTip": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Scripts\\GolemWanderState.cs",
+              "RelativeToolTip": "Scripts\\GolemWanderState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T01:24:25.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GolemStateMachine.cs",
+              "DocumentMoniker": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Scripts\\GolemStateMachine.cs",
+              "RelativeDocumentMoniker": "Scripts\\GolemStateMachine.cs",
+              "ToolTip": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Scripts\\GolemStateMachine.cs",
+              "RelativeToolTip": "Scripts\\GolemStateMachine.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T01:19:55.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GolemDamageState.cs",
+              "DocumentMoniker": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Entities\\GolemDamageState.cs",
+              "RelativeDocumentMoniker": "Entities\\GolemDamageState.cs",
+              "ToolTip": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Entities\\GolemDamageState.cs",
+              "RelativeToolTip": "Entities\\GolemDamageState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T03:16:24.444Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HitBoxModule.cs",
+              "DocumentMoniker": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Objects\\HitBoxModule.cs",
+              "RelativeDocumentMoniker": "Objects\\HitBoxModule.cs",
+              "ToolTip": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Objects\\HitBoxModule.cs",
+              "RelativeToolTip": "Objects\\HitBoxModule.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T03:07:38.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Scripts\\GameManager.cs",
+              "RelativeDocumentMoniker": "Scripts\\GameManager.cs",
+              "ToolTip": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Scripts\\GameManager.cs",
+              "RelativeToolTip": "Scripts\\GameManager.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAAAmwE8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T01:19:40.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FallingStone.cs",
+              "DocumentMoniker": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Objects\\FallingStone.cs",
+              "RelativeDocumentMoniker": "Objects\\FallingStone.cs",
+              "ToolTip": "C:\\Users\\Dullk\\OneDrive\\Documentos\\godotwildjam\\godot-wild-jam\\Objects\\FallingStone.cs",
+              "RelativeToolTip": "Objects\\FallingStone.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T01:23:09.39Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

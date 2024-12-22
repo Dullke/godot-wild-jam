@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=4 uid="uid://bh41fs0jt86dn"]
+[gd_scene load_steps=33 format=4 uid="uid://bh41fs0jt86dn"]
 
 [ext_resource type="PackedScene" uid="uid://24pfyogbkirn" path="res://Objects/floor.tscn" id="1_43wka"]
 [ext_resource type="Script" path="res://Scripts/ManagersDB.cs" id="1_ku3px"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="3_2r6hm"]
 [ext_resource type="PackedScene" uid="uid://cm263am0xgboa" path="res://player.tscn" id="3_ht7rf"]
+[ext_resource type="Texture2D" uid="uid://be2pyuyoxjrem" path="res://Textures/Artifact.png" id="5_cobk0"]
 [ext_resource type="Script" path="res://Scripts/TimeStopMeter.cs" id="7_y1wpq"]
 [ext_resource type="PackedScene" uid="uid://c4xqt7yep67i1" path="res://Entities/stone_golem.tscn" id="8_bt5uy"]
 [ext_resource type="Texture2D" uid="uid://cqncfw1vees2r" path="res://GJW_TrapsGR_PillarTrapYellow_Diffuse.png" id="9_xd3da"]
@@ -27,6 +28,14 @@ fog_density = 0.0846
 adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ekprx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvtak"]
+bg_color = Color(0, 0, 0, 0.580392)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_igw81"]
+bg_color = Color(0.866667, 0.6, 0, 0.160784)
+
+[sub_resource type="SphereMesh" id="SphereMesh_f03wx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8jxu"]
 resource_name = "PillarTrapYellow"
@@ -202,7 +211,7 @@ transform = Transform3D(1.41372, 0, 0, 0, 0.756, 0, 0, 0, 1.41372, 0, 2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.704016, -0.316377, 0.63582, 0, 0.895289, 0.445486, -0.710184, -0.313629, 0.630298, 13.8132, 11.5847, 11.3421)
+transform = Transform3D(0.737255, -0.526901, 0.422884, 0, 0.625924, 0.779884, -0.675615, -0.574973, 0.461466, 12.4481, 24.0404, 11.9063)
 fov = 87.7623
 
 [node name="Enviroment" type="Node3D" parent="."]
@@ -218,12 +227,15 @@ light_energy = 0.642
 shadow_enabled = true
 sky_mode = 1
 
-[node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("cursorIndicators", "player", "mainCamera")]
+[node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("cursorIndicators", "cooldown", "player", "mainCamera")]
 unique_name_in_owner = true
 script = ExtResource("3_2r6hm")
 cursorIndicators = NodePath("../CursorIndicators")
+cooldown = NodePath("UseCooldownTimeFreeze")
 player = NodePath("../Player")
 mainCamera = NodePath("../Camera3D")
+
+[node name="UseCooldownTimeFreeze" type="Timer" parent="GameManager"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -235,25 +247,37 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TimeStopBar" type="ProgressBar" parent="Control"]
-layout_mode = 1
+[node name="Artifact" type="Sprite2D" parent="Control"]
+clip_children = 2
+position = Vector2(1072, 597)
+rotation = -0.340913
+scale = Vector2(0.074875, 0.074875)
+texture = ExtResource("5_cobk0")
+region_rect = Rect2(948.455, 684.5, 2979.55, 2860.36)
+
+[node name="TimeStopBar" type="ProgressBar" parent="Control/Artifact"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -143.0
-offset_top = -133.0
+offset_left = -7286.06
+offset_top = -3599.14
+offset_right = -5182.06
+offset_bottom = -704.14
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 36
-value = 100.0
+rotation = -1.32801
+theme_override_styles/background = SubResource("StyleBoxFlat_rvtak")
+theme_override_styles/fill = SubResource("StyleBoxFlat_igw81")
+value = 49.76
+show_percentage = false
 script = ExtResource("7_y1wpq")
 
 [node name="CursorIndicators" type="Node3D" parent="."]
 
 [node name="StasisIndicator" type="MeshInstance3D" parent="CursorIndicators"]
-visible = false
+mesh = SubResource("SphereMesh_f03wx")
 
 [node name="StoneGolem" parent="." instance=ExtResource("8_bt5uy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.118105)
