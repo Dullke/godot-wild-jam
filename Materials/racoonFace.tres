@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b8g1q2vct6bd"]
+
+[ext_resource type="Texture2D" uid="uid://cmj2dkxarrrc6" path="res://Textures/RaccoonFace_Diffuse.png" id="1_bpe4s"]
+
+[resource]
+albedo_texture = ExtResource("1_bpe4s")
+metallic_specular = 0.0
