@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bh75ooau1dyan"
 path.s3tc="res://.godot/imported/GJW_ArenaGR_ArenaStones1_Diffuse.png-6db673247e7f8495b9fd0eebdb0950d0.s3tc.ctex"
+path.etc2="res://.godot/imported/GJW_ArenaGR_ArenaStones1_Diffuse.png-6db673247e7f8495b9fd0eebdb0950d0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://GJW_ArenaGR_ArenaStones1_Diffuse.png"
-dest_files=["res://.godot/imported/GJW_ArenaGR_ArenaStones1_Diffuse.png-6db673247e7f8495b9fd0eebdb0950d0.s3tc.ctex"]
+dest_files=["res://.godot/imported/GJW_ArenaGR_ArenaStones1_Diffuse.png-6db673247e7f8495b9fd0eebdb0950d0.s3tc.ctex", "res://.godot/imported/GJW_ArenaGR_ArenaStones1_Diffuse.png-6db673247e7f8495b9fd0eebdb0950d0.etc2.ctex"]
 
 [params]
 

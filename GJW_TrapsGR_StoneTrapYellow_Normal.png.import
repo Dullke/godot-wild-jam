@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfhs4wi7qngxr"
 path.s3tc="res://.godot/imported/GJW_TrapsGR_StoneTrapYellow_Normal.png-cfab9deb22a49d9339edb4a4a85594be.s3tc.ctex"
+path.etc2="res://.godot/imported/GJW_TrapsGR_StoneTrapYellow_Normal.png-cfab9deb22a49d9339edb4a4a85594be.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://GJW_TrapsGR_StoneTrapYellow_Normal.png"
-dest_files=["res://.godot/imported/GJW_TrapsGR_StoneTrapYellow_Normal.png-cfab9deb22a49d9339edb4a4a85594be.s3tc.ctex"]
+dest_files=["res://.godot/imported/GJW_TrapsGR_StoneTrapYellow_Normal.png-cfab9deb22a49d9339edb4a4a85594be.s3tc.ctex", "res://.godot/imported/GJW_TrapsGR_StoneTrapYellow_Normal.png-cfab9deb22a49d9339edb4a4a85594be.etc2.ctex"]
 
 [params]
 

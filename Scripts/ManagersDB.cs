@@ -12,4 +12,9 @@ public partial class ManagersDB : Node3D
 
     public static GameManager GameManager => ManagerNodes["Game"] as GameManager;
 
+    public override void _ExitTree()
+    {
+        ManagerNodes.Clear();
+    }
+
 }

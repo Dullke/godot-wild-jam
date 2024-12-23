@@ -18,6 +18,7 @@ public partial class GameManager : Node3D
     [Export] public Node3D cursorIndicators;
     [Export] public float maxFreezeTime = 5f;
     [Export] public Timer cooldown;
+    [Export] public Camera3D victoryCamera;
     public float overchargeThreshold;
     public float GlobalDeltaTime;
 
@@ -80,7 +81,6 @@ public partial class GameManager : Node3D
 
         frozenTimeLeft = Mathf.Clamp(frozenTimeLeft, 0, maxFreezeTime);
 
-
         if (Input.IsActionJustPressed("Select") && hoveringOver != null && timeFrozen)
         {
             hoveringOver.Highlight();
@@ -89,14 +89,34 @@ public partial class GameManager : Node3D
 
         if (Input.IsActionJustPressed("ReleaseAll"))
         {
-            foreach (IFreezable frozenObject in onStasisObjects)
+            foreach (IFreezable freezable in onStasisObjects)
             {
-                frozenObject.Unfreeze();
-            }
+                try
+                {
+                    freezable.Unfreeze();
+                    onStasisObjects.Remove(freezable);
+                    break;
+                }
+                catch
+                {
+                    continue;
+                }
 
-            onStasisObjects.Clear();
+            }
         }
     }
+
+    public void GameOver()
+    {
+        GetTree().ChangeSceneToFile("res://main.tscn");
+    }
+
+    public void EndGame()
+    {
+        victoryCamera.Current = true;
+    }
+
+  
 
     private Vector3 GetCursorToWorldPoint()
     {
@@ -109,7 +129,6 @@ public partial class GameManager : Node3D
 
         //Configures the current rayquery.
         PhysicsRayQueryParameters3D rayQuery = new PhysicsRayQueryParameters3D();
-        rayQuery.CollisionMask = 1;
         rayQuery.From = rayOrigin;
         rayQuery.To = rayEnd;
 
@@ -117,7 +136,7 @@ public partial class GameManager : Node3D
         //Intersect objects that can be put on stasis
         Dictionary rayResults = spaceState.IntersectRay(rayQuery);
         if (rayResults.Count > 0)
-            hoveringOver = (Node3D)rayResults["collider"] as IFreezable;
+            hoveringOver = ((Node3D)rayResults["collider"]).Owner as IFreezable;
         else hoveringOver = null;
 
         //Intersect floor and get hit position.

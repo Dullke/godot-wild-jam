@@ -1,21 +1,18 @@
 using Godot;
 
-
 public partial class GolemWanderState : Node, GolemState
 {
     [Export] public float wanderSpeed;
-    [Export] public float attackCooldown;
+    [Export] public Timer attackCooldown;
 
     public bool startedFlag = false;
 
-    public async void OnEnter(GolemStateMachine machine)
+
+    public  void OnEnter(GolemStateMachine machine)
     {
-
         machine.animator.Play("Forward");
-
-        await ToSignal(GetTree().CreateTimer(attackCooldown), SceneTreeTimer.SignalName.Timeout);
-        if (ManagersDB.GameManager.TimeFrozenFlag) await ToSignal(ManagersDB.GameManager, GameManager.SignalName.OnTimeUnfrozen);
-        machine.ChangeState("Attack");
+        attackCooldown.Timeout += () => machine.ChangeState("Attack");
+        attackCooldown.Start();
     }
 
 
@@ -33,6 +30,7 @@ public partial class GolemWanderState : Node, GolemState
 
     public void OnExit(GolemStateMachine machine)
     {
+        attackCooldown.Stop();
     }
 
 }

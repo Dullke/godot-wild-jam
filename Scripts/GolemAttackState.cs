@@ -21,11 +21,11 @@ public partial class GolemAttackState : Node, GolemState
         }
 
 
-        if (punches > 4)
+        if (punches > 3)
         {
             machine.animator.Play("Stomp");
             punches = 0;
-        } else if (machine.GlobalPosition.DistanceTo(ManagersDB.GameManager.player.GlobalPosition) < 10) {
+        } else if (machine.GlobalPosition.DistanceTo(ManagersDB.GameManager.player.GlobalPosition) < 12) {
             machine.animator.Play("Punch");
             punches++;
         }
@@ -39,7 +39,7 @@ public partial class GolemAttackState : Node, GolemState
     {
         Vector3 directionToPlayer = (ManagersDB.GameManager.player.GlobalPosition - machine.GlobalPosition).Normalized();
         float angle = Mathf.Atan2(directionToPlayer.X, directionToPlayer.Z);
-        machine.Rotation = Vector3.Up * Mathf.LerpAngle(machine.Rotation.Y, angle, ManagersDB.GameManager.GlobalDeltaTime * 8);
+        machine.Rotation = Vector3.Up * Mathf.LerpAngle(machine.Rotation.Y, angle, ManagersDB.GameManager.GlobalDeltaTime * 10);
     }
 
     public void OnExit(GolemStateMachine machine)
@@ -61,9 +61,10 @@ public partial class GolemAttackState : Node, GolemState
             Vector3 randomPosition = Vector3.Zero;
             do
             {
-                randomPosition = new Vector3((float)GD.RandRange(-spawnRadius, spawnRadius), 25, (float)GD.RandRange(-spawnRadius, spawnRadius));
+                randomPosition = new Vector3((float)GD.RandRange(-spawnRadius, spawnRadius), 0, (float)GD.RandRange(-spawnRadius, spawnRadius));
             } while (randomPosition.DistanceTo(golem.GlobalPosition) < 6);
 
+            randomPosition.Y = 25f;
             fallingRock.GlobalPosition = randomPosition;
         }
     }

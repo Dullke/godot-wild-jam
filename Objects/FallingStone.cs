@@ -1,22 +1,24 @@
 using Godot;
 
-public partial class FallingStone : CharacterBody3D, IFreezable
+public partial class FallingStone : Node3D, IFreezable
 {
 	[Export] bool isShiny;
     [Export] Area3D detection;
+    [Export] Area3D damage;
     [Export] Node3D highlight;
-
 
     public void Highlight()
     {
         highlight.Visible = true;
-        SetPhysicsProcess(false);
+        SetProcess(false);
+        damage.Monitorable = false;
     }
 
     public void Unfreeze()
     {
         highlight.Visible = false;
-        SetPhysicsProcess(true);
+        SetProcess(true);
+        damage.Monitorable = true;
     }
 
     public override void _EnterTree()
@@ -25,10 +27,16 @@ public partial class FallingStone : CharacterBody3D, IFreezable
     }
 
 
+    public override void _Process(double delta)
+    {
+        if (GlobalPosition.Y <= 0.3) return;
+        if (ManagersDB.GameManager.TimeFrozenFlag == false) 
+            GlobalPosition += Vector3.Down * 10 * ManagersDB.GameManager.GlobalDeltaTime;
+    }
+
     public override void _PhysicsProcess(double delta)
 	{
-        Velocity += GetGravity() * ManagersDB.GameManager.GlobalDeltaTime;
-        if (ManagersDB.GameManager.TimeFrozenFlag == false) MoveAndSlide();
+
 	}
     
 }

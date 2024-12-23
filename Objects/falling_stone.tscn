@@ -50,55 +50,62 @@ shadow_mesh = SubResource("ArrayMesh_gwcsg")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a80t7"]
 render_priority = 0
 shader = ExtResource("4_t6ivy")
-shader_parameter/outline_color = Color(0.832447, 0.550936, 7.70092e-07, 1)
+shader_parameter/outline_color = Color(0.7158, 0.471291, 0, 1)
 shader_parameter/outline_width = 3.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_f7jih"]
-size = Vector3(1.92676, 4.46319, 2.46777)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v0xgr"]
+height = 4.99424
+radius = 1.50902
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_n2bi2"]
-size = Vector3(2.9502, 4.56445, 3.36719)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wuef7"]
+height = 5.54964
+radius = 1.63781
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_spnor"]
-size = Vector3(2.98047, 0.671875, 3.08105)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_itn4r"]
+height = 0.607744
+radius = 1.13861
 
-[node name="FallingStone" type="CharacterBody3D" node_paths=PackedStringArray("detection", "highlight")]
-transform = Transform3D(0.726, 0, 0, 0, 0.726, 0, 0, 0, 0.726, 0, 0, 0)
-collision_layer = 48
-collision_mask = 25
+[node name="FallingStone" type="Node3D" node_paths=PackedStringArray("detection", "damage", "highlight")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00370026, -0.014492, -0.0195904)
 script = ExtResource("1_feslr")
 detection = NodePath("SideCollision")
-highlight = NodePath("StoneTrap/Outline")
+damage = NodePath("Below")
+highlight = NodePath("StaticBody3D/StoneTrap/Outline")
 
-[node name="StoneTrap" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31333, 0.370564, 5.65864)
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 48
+collision_mask = 17
+
+[node name="StoneTrap" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -4.11633, 0.533903, 4.60984)
 mesh = SubResource("ArrayMesh_cnlwr")
 skeleton = NodePath("")
 
-[node name="Outline" type="MeshInstance3D" parent="StoneTrap"]
+[node name="Outline" type="MeshInstance3D" parent="StaticBody3D/StoneTrap"]
 visible = false
 material_overlay = SubResource("ShaderMaterial_a80t7")
 mesh = SubResource("ArrayMesh_cnlwr")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22946, 0)
-shape = SubResource("BoxShape3D_f7jih")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.134334, 2.02102, 0.0829319)
+shape = SubResource("CylinderShape3D_v0xgr")
 
 [node name="SideCollision" type="Area3D" parent="."]
 collision_layer = 48
 collision_mask = 8
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="SideCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.56177, 0)
-shape = SubResource("BoxShape3D_n2bi2")
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.134334, 2.28687, 0.0829319)
+shape = SubResource("CylinderShape3D_wuef7")
 
 [node name="Below" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3798, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.793968, 0)
 collision_layer = 64
 collision_mask = 128
 script = ExtResource("5_hqa1j")
+destroyAfterHit = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Below"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.381217, 0)
-shape = SubResource("BoxShape3D_spnor")
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.134334, 0.701219, 0.0829319)
+shape = SubResource("CylinderShape3D_itn4r")

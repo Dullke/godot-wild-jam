@@ -208,11 +208,12 @@ script = ExtResource("1_ku3px")
 transform = Transform3D(1.41372, 0, 0, 0, 0.756, 0, 0, 0, 1.41372, 0, 2, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_ht7rf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
+transform = Transform3D(-1.15311, 0, 0.600273, 0, 1.3, 0, -0.600273, 0, -1.15311, 0, 1, 7)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.737255, -0.526901, 0.422884, 0, 0.625924, 0.779884, -0.675615, -0.574973, 0.461466, 12.4481, 24.0404, 11.9063)
-fov = 87.7623
+transform = Transform3D(0.737255, -0.561988, 0.374999, 3.72529e-09, 0.555048, 0.831818, -0.675615, -0.613262, 0.409213, 9.0716, 21.0014, 8.22174)
+current = true
+fov = 79.439
 
 [node name="Enviroment" type="Node3D" parent="."]
 
@@ -227,11 +228,12 @@ light_energy = 0.642
 shadow_enabled = true
 sky_mode = 1
 
-[node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("cursorIndicators", "cooldown", "player", "mainCamera")]
+[node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("cursorIndicators", "cooldown", "victoryCamera", "player", "mainCamera")]
 unique_name_in_owner = true
 script = ExtResource("3_2r6hm")
 cursorIndicators = NodePath("../CursorIndicators")
 cooldown = NodePath("UseCooldownTimeFreeze")
+victoryCamera = NodePath("../StoneGolem/VictoryCameraPivot/Camera3D")
 player = NodePath("../Player")
 mainCamera = NodePath("../Camera3D")
 
@@ -247,15 +249,25 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Artifact" type="Sprite2D" parent="Control"]
+[node name="ArtifactRect" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Artifact" type="Sprite2D" parent="Control/ArtifactRect"]
 clip_children = 2
-position = Vector2(1072, 597)
+position = Vector2(-80, -51)
 rotation = -0.340913
 scale = Vector2(0.074875, 0.074875)
 texture = ExtResource("5_cobk0")
 region_rect = Rect2(948.455, 684.5, 2979.55, 2860.36)
 
-[node name="TimeStopBar" type="ProgressBar" parent="Control/Artifact"]
+[node name="TimeStopBar" type="ProgressBar" parent="Control/ArtifactRect/Artifact"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -280,7 +292,13 @@ script = ExtResource("7_y1wpq")
 mesh = SubResource("SphereMesh_f03wx")
 
 [node name="StoneGolem" parent="." instance=ExtResource("8_bt5uy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.118105)
+transform = Transform3D(1.16958, 0, -0.165832, 0, 1.18128, 0, 0.165832, 0, 1.16958, 0.885069, 1.55245, -2.86997)
+
+[node name="VictoryCameraPivot" type="Node3D" parent="StoneGolem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.118105)
+
+[node name="Camera3D" type="Camera3D" parent="StoneGolem/VictoryCameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 5.817, 6.457)
 
 [node name="GJW_TrapsGR" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25721, 0.370564, 7.45864)
@@ -491,3 +509,5 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00832, -2.16154, 2.45864)
 mesh = SubResource("ArrayMesh_pis53")
 skeleton = NodePath("")
+
+[node name="MainScene" type="Node3D" parent="."]
